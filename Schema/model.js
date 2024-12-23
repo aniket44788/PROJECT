@@ -24,6 +24,10 @@ const schema = mongoose.Schema({
     type: String,
     required: true,
   },
+  token: {
+    type : String,
+    required: true
+  }
 });
 
 const model = mongoose.model("darkpandas", schema);

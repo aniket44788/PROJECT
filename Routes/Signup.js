@@ -14,6 +14,7 @@ signup.post("/", async (req, res) => {
     phone: joi.string().required(),
     gender: joi.string().required(),
   });
+  const token = jwt.sign({_id:123456},process.env.KEY)
   const { error } = schema.validate(req.body);
   if (error) {
     return res.status(400).json({
@@ -39,6 +40,7 @@ signup.post("/", async (req, res) => {
       age: req.body.age,
       phone: req.body.phone,
       gender: req.body.gender,
+      token: token,
     });
     const students = await newuser.save();
     res.status(201).json({
